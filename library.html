@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library</title>
+    <style>
+        body {
+            background-color: #94a3b8;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #bookList {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .book-card {
+            background-color: #8b5cf6;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            box-shadow: 4px 2px 4px #0891b2;
+        }
+        button{
+            margin: 5px;
+            border-radius: 4px;
+        }
+        button:hover{
+            background-color:#94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Library</h1>
+    <button id="newBookButton">NEW BOOK</button>
+
+    <dialog id="bookDialog">
+        <form id="bookForm">
+            <h3>Add a New Book</h3>
+            <input type="text" id="title" placeholder="Book Title" required>
+            <input type="text" id="author" placeholder="Author" required>
+            <input type="number" id="pages" placeholder="Number of Pages" required>
+            <input type="number" id="price" placeholder="Price" required>
+            <label>
+                <input type="checkbox" id="is-read"> Read
+            </label>
+            <div>
+                <button type="submit">Add Book</button>
+                <button type="button" id="closeDialog">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div id="bookList"></div>
+    <script src="library.js"></script>
+</body>
+</html>
