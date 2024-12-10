@@ -1,13 +1,17 @@
 {
-    "version": 2,
-    "routes": [
+  "version": 2,
+  "routes": [
       {
-        "src": "/(.*\\.(css|png|jpg|jpeg|gif|svg))",
-        "dest": "/$1"
+          "src": "/(.*\\.(css|png|jpg|jpeg|gif|svg|js))",
+          "dest": "/$1"
       },
       {
-        "src": "/(.*)",
-        "dest": "/library.html"
+          "src": "/",
+          "dest": "/library.html"
+      },
+      {
+          "src": "/(.*)",
+          "dest": "/library.html"
       }
-    ]
-  }
+  ]
+}
