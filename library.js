@@ -1,4 +1,5 @@
 const myLibrary = [];
+
 function Book(title, author, pages, price, isread) {
     this.title = title;
     this.author = author;
@@ -18,7 +19,7 @@ function addBookToLibrary(title, author, pages, price, isread) {
 
 function displayBooks() {
     const bookList = document.getElementById('bookList');
-    bookList.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     myLibrary.forEach((book, index) => {
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
@@ -32,15 +33,19 @@ function displayBooks() {
             <button class="toggle-read">Toggle Read Status</button>
             <button class="remove-book">Remove Book</button>
         `;
-        bookList.appendChild(bookCard);
+        fragment.appendChild(bookCard);
     });
-    document.querySelectorAll('.toggle-read').forEach(button => {
-        button.addEventListener('click', toggleRead);
-    });
-    document.querySelectorAll('.remove-book').forEach(button => {
-        button.addEventListener('click', removeBook);
-    });
+    bookList.innerHTML = '';
+    bookList.appendChild(fragment);
 }
+
+document.getElementById('bookList').addEventListener('click', function(event) {
+    if (event.target.classList.contains('toggle-read')) {
+        toggleRead(event);
+    } else if (event.target.classList.contains('remove-book')) {
+        removeBook(event);
+    }
+});
 
 function toggleRead(event) {
     const bookCard = event.target.parentElement;
@@ -78,6 +83,8 @@ document.getElementById('closeDialog').addEventListener('click', function() {
     document.getElementById('bookDialog').close();
 });
 
-addBookToLibrary("The Oromayi", "Ali", 243, 564, true);
-addBookToLibrary("The African Continent", "Akuko Kufa", 189, 465, false);
-displayBooks();
+document.addEventListener('DOMContentLoaded', () => {
+    addBookToLibrary("The Oromayi", "Ali", 243, 564, true);
+    addBookToLibrary("The African Continent", "Akuko Kufa", 189, 465, false);
+    displayBooks();
+});
